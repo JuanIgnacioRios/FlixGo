@@ -1,0 +1,12 @@
+.category-filters {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .category-filters button {
+    background-color: transparent;
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+  

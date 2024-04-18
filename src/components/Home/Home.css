@@ -1,0 +1,23 @@
+.Home {
+    background-color: #261152; /* Dark purple background */
+    color: #FFFFFF; /* White color for text */
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+  }
+  
+  button {
+    background: none;
+    border: 2px solid #FFFFFF; /* White border for buttons */
+    color: #FFFFFF;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #FFFFFF;
+    color: #261152;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  

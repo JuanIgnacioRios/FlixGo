@@ -1,0 +1,31 @@
+.movie-carousel {
+    margin-bottom: 20px;
+  }
+  
+  .movie-carousel h2 {
+    margin-bottom: 10px;
+  }
+  
+  .carousel {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling for small screens */
+  }
+  
+  .movie {
+    background-color: #F5F5F5; /* Light grey for movie placeholders */
+    width: 150px; /* Placeholder width, adjust as needed */
+    height: 225px; /* Placeholder height, adjust as needed */
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Hide scrollbar for aesthetic reasons */
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .carousel {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
