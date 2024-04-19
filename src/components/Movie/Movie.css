@@ -1,0 +1,27 @@
+.Movie-card{
+    display: flex;
+    height: 250px;
+    width: 200px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    background-size:cover;
+}
+
+.Movie-card img{
+    border-radius: 5px;
+}
+
+.Movie-card h3{
+    margin:  auto auto 0 auto;
+}
+
+.Movie-card:hover{
+    transform: scale(1.05);
+}
+
+.scroll-button{
+    border: none;
+    mask: linear-gradient(
+        black 80%;
+    );
+}

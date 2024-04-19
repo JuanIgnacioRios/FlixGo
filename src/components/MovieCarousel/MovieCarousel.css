@@ -6,17 +6,16 @@
     margin-bottom: 10px;
   }
   
+.carousel-container{
+  display: flex;
+  flex-flow: row;
+}
+
   .carousel {
     display: flex;
-    overflow-x: auto; /* Enables horizontal scrolling for small screens */
-  }
-  
-  .movie {
-    background-color: #F5F5F5; /* Light grey for movie placeholders */
-    width: 150px; /* Placeholder width, adjust as needed */
-    height: 225px; /* Placeholder height, adjust as needed */
-    margin-right: 10px;
-    border-radius: 5px;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
   }
   
   /* Hide scrollbar for aesthetic reasons */
