@@ -3,6 +3,7 @@ import React from 'react';
 import './Home.css'; // Make sure to create an App.css file for styling
 import SearchBar from '../SearchBar/SearchBar';
 import MovieCarousel from '../MovieCarousel/MovieCarousel';
+import HomeCover from '../HomeCover/HomeCover';
 import CategoryFilters from '../CategoryFilters/CategoryFilters';
 import { useState, useEffect } from 'react';
 
@@ -29,9 +30,10 @@ const Home = () => {
   return (
     <div className="Home">
       <SearchBar />
+      <HomeCover />
       <CategoryFilters />
       {genres.map(genre => (
-      <MovieCarousel code={genre.id} title={genre.name} />
+      <MovieCarousel key={genre.id} code={genre.id} title={genre.name} />
     ))}
     </div>
   );
