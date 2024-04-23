@@ -1,27 +1,37 @@
-.Movie-card{
+.Movie-card {
     display: flex;
     height: 250px;
     width: 200px;
     transition: transform 0.3s ease;
     cursor: pointer;
-    background-size:cover;
+    margin: auto;
+    background-size: cover;
 }
 
-.Movie-card img{
+.Movie-card a {
+    width: 200px;
+    height: 250px;
     border-radius: 5px;
+    margin: auto;
+    display: flex;
 }
 
-.Movie-card h3{
-    margin:  auto auto 0 auto;
+.Movie-card a img {
+    margin: auto;
+    border-radius: 5px;
+    height: 250px;
 }
 
-.Movie-card:hover{
+.Movie-card h3 {
+    margin: auto auto 0 auto;
+}
+
+.Movie-card:hover {
     transform: scale(1.05);
 }
 
-.scroll-button{
+.scroll-button {
     border: none;
-    mask: linear-gradient(
-        black 80%;
+    mask: linear-gradient( black 80%;
     );
 }

@@ -24,22 +24,3 @@ button:hover {
     color: #261152;
     transition: background-color 0.3s, color 0.3s;
 }
-
-.category-filters {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    padding: 10px;
-    margin: auto;
-    max-width: 1280px;
-  }
-  
-  .category-filters button {
-    background-color: transparent;
-    color: #FFFFFF;
-    font-weight: bold;
-  }
-
-.category-filters::-webkit-scrollbar {
-    display: none;
-}

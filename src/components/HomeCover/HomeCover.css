@@ -7,12 +7,13 @@
     background-position: center;
     padding: 30px;
     gap: 10px;
+    margin-top: 100px;
 }
 
 #cover:before {
     content: '';
     position: absolute;
-    top: 0px;
+    top: 100px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -22,7 +23,7 @@
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
-#title-container{
+#title-container {
     width: 100%;
     height: 40%;
     display: flex;
@@ -32,42 +33,37 @@
     z-index: 1;
 }
 
-.cover-title{
+.cover-title {
     font-size: 120px;
-    font-family:'League Gothic';
+    font-family: 'League Gothic';
     font-weight: bold;
 }
 
-.green-font{
+.green-font {
     color: #7ED957;
 }
 
-
-#subtitle-container{
-    font-family:'League Gothic';
+#subtitle-container {
+    font-family: 'League Gothic';
     margin: 0 auto auto auto;
     font-size: 55px;
     z-index: 1;
 }
 
-
 @media screen and (min-width: 1024px) {
     #cover {
         flex-flow: row;
     }
-
-    #title-container{
+    #title-container {
         height: 100%;
         width: 50%;
         justify-content: end;
         align-items: center;
     }
-
-    #title-container h1{
+    #title-container h1 {
         font-size: 300px;
     }
-    #subtitle-container{
+    #subtitle-container {
         margin: auto auto auto 5px;
-
     }
 }

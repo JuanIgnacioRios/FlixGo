@@ -2,6 +2,11 @@
     color: white !important;
 }
 
+.navbar-brand img {
+    height: 100px;
+    width: 100px;
+}
+
 .navbar-toggler-icon {
     color: white !important;
 }
@@ -25,6 +30,6 @@ span.navbar-toggler-icon {
     color: white;
 }
 
-#navbarNav ul{
+#navbarNav ul {
     margin: auto 0 auto auto;
 }

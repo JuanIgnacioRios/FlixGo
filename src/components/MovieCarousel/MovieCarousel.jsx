@@ -10,7 +10,7 @@ const MovieCarousel = ({ code, title }) => {
   const carouselRef = useRef(null);
 
   useEffect(() => {
-    setLoading(true); // Establecer loading a true al comenzar la carga de películas
+    setLoading(false); 
     if (code !== "No code") {
       fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=es-ES&page=1&sort_by=popularity.desc&with_genres=${code}`, {
         method: 'GET',
@@ -22,7 +22,7 @@ const MovieCarousel = ({ code, title }) => {
         .then(response => response.json())
         .then(data => {
           setMovies(data.results);
-          setLoading(false); // Establecer loading a false cuando las películas se carguen correctamente
+          setLoading(false);
         })
         .catch(err => console.log(err));
     }

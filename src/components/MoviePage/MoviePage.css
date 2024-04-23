@@ -1,0 +1,48 @@
+.movie-details {
+    display: flex;
+    flex-flow: column;
+    background-color: #261152;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    padding: 100px 0;
+    min-height: 100vh;
+}
+
+.movie-information {
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+    max-width: 1280px;
+    width: 90%;
+    margin: 50px auto;
+}
+
+.movie-information section {
+    display: flex;
+    flex-flow: column;
+}
+
+.movie-information section img {
+    margin: auto;
+    height: 500px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: -1px 0px 9px 4px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: -1px 0px 9px 4px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: -1px 0px 9px 4px rgba(0, 0, 0, 0.31);
+}
+
+.List-checkbox {
+    display: flex;
+    flex-flow: row;
+    gap: 5px;
+}
+
+@media screen and (min-width: 1024px) {
+    .movie-information {
+        flex-flow: row;
+    }
+    .movie-information section {
+        height: 100%;
+    }
+}

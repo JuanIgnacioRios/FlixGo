@@ -18,8 +18,6 @@ const HomeCover = () => {
         })
         .catch(err => console.log(err));
     }, []);
-  
-    console.log(cover)
 
   return (
     <div id='cover' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${cover.backdrop_path}')`}}>

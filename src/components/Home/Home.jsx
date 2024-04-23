@@ -1,10 +1,8 @@
 // App.js or your main component file
 import React from 'react';
 import './Home.css'; // Make sure to create an App.css file for styling
-import SearchBar from '../SearchBar/SearchBar';
 import MovieCarousel from '../MovieCarousel/MovieCarousel';
 import HomeCover from '../HomeCover/HomeCover';
-import CategoryFilters from '../CategoryFilters/CategoryFilters';
 import { useState, useEffect } from 'react';
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar';
 
@@ -32,12 +30,6 @@ const Home = () => {
     <div className="Home">
       <PrivateNavBar />
       <HomeCover />
-      <SearchBar />
-      <div className="category-filters">
-        {genres.map(genre => (
-          <button key={genre.id}>{genre.name}</button>
-        ))}
-      </div>
       {genres.map(genre => (
         <MovieCarousel key={genre.id} code={genre.id} title={genre.name} />
       ))}
