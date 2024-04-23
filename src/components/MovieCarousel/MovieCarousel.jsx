@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Movie from '../Movie/Movie';
 import './MovieCarousel.css';
 
-const MovieCarousel = ({ code = "No code", title }) => {
+const MovieCarousel = ({ code, title }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [scrollLeftVisible, setScrollLeftVisible] = useState(false);

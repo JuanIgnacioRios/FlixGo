@@ -1,14 +1,11 @@
-// CategoryFilters.js
 import React from 'react';
-import './CategoryFilters.css'; // Make sure to create a CategoryFilters.css file for styling
+import './CategoryFilters.css'; // Asegúrate de crear un archivo CategoryFilters.css para el estilo
 
-const CategoryFilters = () => {
+const CategoryFilters = ({ genres }) => {
+  console.log(genres);
+
   return (
-    <div className="category-filters">
-      <button>Novedades</button>
-      <button>Mi Lista</button>
-      <button>Géneros</button>
-    </div>
+    
   );
 }
 

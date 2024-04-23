@@ -4,16 +4,18 @@
     color: #FFFFFF;
     /* White color for text */
     font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    justify-content: center;
 }
 
 button {
     background: none;
-    border: 2px solid #FFFFFF;
+    border: 1px solid #FFFFFF;
     /* White border for buttons */
     color: #FFFFFF;
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -21,4 +23,23 @@ button:hover {
     background-color: #FFFFFF;
     color: #261152;
     transition: background-color 0.3s, color 0.3s;
+}
+
+.category-filters {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+    margin: auto;
+    max-width: 1280px;
+  }
+  
+  .category-filters button {
+    background-color: transparent;
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+
+.category-filters::-webkit-scrollbar {
+    display: none;
 }

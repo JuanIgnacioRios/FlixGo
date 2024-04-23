@@ -6,6 +6,7 @@ import MovieCarousel from '../MovieCarousel/MovieCarousel';
 import HomeCover from '../HomeCover/HomeCover';
 import CategoryFilters from '../CategoryFilters/CategoryFilters';
 import { useState, useEffect } from 'react';
+import PrivateNavBar from '../PrivateNavBar/PrivateNavBar';
 
 const Home = () => {
   const [genres, setGenres] = useState([])
@@ -29,12 +30,17 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <SearchBar />
+      <PrivateNavBar />
       <HomeCover />
-      <CategoryFilters />
+      <SearchBar />
+      <div className="category-filters">
+        {genres.map(genre => (
+          <button key={genre.id}>{genre.name}</button>
+        ))}
+      </div>
       {genres.map(genre => (
-      <MovieCarousel key={genre.id} code={genre.id} title={genre.name} />
-    ))}
+        <MovieCarousel key={genre.id} code={genre.id} title={genre.name} />
+      ))}
     </div>
   );
 }

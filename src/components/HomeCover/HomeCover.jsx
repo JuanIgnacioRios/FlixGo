@@ -23,7 +23,10 @@ const HomeCover = () => {
 
   return (
     <div id='cover' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${cover.backdrop_path}')`}}>
-
+      <div id='title-container'>
+        <h1 className='cover-title green-font'>Flix</h1><h1 className='cover-title'>Go</h1>
+      </div>
+      <h1 id='subtitle-container'>EXPLORÁ, <br/> DESCUBRÍ y <br/> ORGANIZÁ <br/>LAS ÚLTIMAS PELÍCULAS DEL MOMENTO</h1>
     </div>
   )
 }
