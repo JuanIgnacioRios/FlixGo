@@ -10,9 +10,11 @@ const PrivateNavBar = () => {
     width: '100%',
     backgroundColor: '#261152',
     boxShadow: 'none',
+    padding: '0px'
   };
   
-  const containerStyle = {
+  const containerStyle =   {
+    height: '100px',
     maxWidth: '1280px',
     width: '90%',
   };
@@ -20,8 +22,8 @@ const PrivateNavBar = () => {
   return (
     <nav id="navigation-bar" className="navbar bg-* navbar-expand-lg sticky"  style={navbarStyle}>
       <div className="container-fluid" style={containerStyle}>
-        <Link class="navbar-brand" to="/home">
-          <img src="FlixGO-logo.png" alt="Flixgo-logo" />
+        <Link className="navbar-brand" to="/home">
+          <img src="/FlixGO-logo.png" alt="Flixgo-logo" />
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded={expanded} onClick={() => setExpanded(!expanded)} aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

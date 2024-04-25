@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar'
+import BackButton from '../BackButton/BackButton'
 import './MoviePage.css'
 
 const MoviePage = () => {
@@ -29,6 +30,7 @@ const MoviePage = () => {
   return (
     <div className='movie-details'>
         <PrivateNavBar />
+        <BackButton />
         <div className='movie-information'>
             <section>
                 <img src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`} alt="" />

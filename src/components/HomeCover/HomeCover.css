@@ -48,6 +48,7 @@
     margin: 0 auto auto auto;
     font-size: 55px;
     z-index: 1;
+    text-align: center;
 }
 
 @media screen and (min-width: 1024px) {
@@ -65,5 +66,6 @@
     }
     #subtitle-container {
         margin: auto auto auto 5px;
+        text-align: left;
     }
 }

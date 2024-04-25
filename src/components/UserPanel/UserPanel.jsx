@@ -1,5 +1,6 @@
 import React from 'react'
 import './UserPanel.css'
+import BackButton from '../BackButton/BackButton'
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar'
 
 const UserPanel = () => {
@@ -8,6 +9,7 @@ const UserPanel = () => {
   return (
     <div className='user-panel'>
         <PrivateNavBar />
+        <BackButton />
         <div className='user-card'>
             <h2>Detalles de cuenta</h2>
             <form id='edit-user-detail-form' method='put' action="/updateuserinfo">

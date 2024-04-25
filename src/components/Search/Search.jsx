@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Search.css';
 import Movie from '../Movie/Movie';
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar';
+import BackButton from '../BackButton/BackButton'
 
 const Search = () => {
     const [movies, setMovies] = useState([]);
@@ -85,6 +86,7 @@ const Search = () => {
     return (
         <div className='Search'>
             <PrivateNavBar />
+            <BackButton />
             <div className="search-bar">
                 <input type="text" placeholder="Buscá por titulo o por actor..." onChange={handleSearchInput}/>
             </div>
