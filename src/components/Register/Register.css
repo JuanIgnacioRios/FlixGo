@@ -31,7 +31,7 @@
     gap: 15px;
 }
 
-#login-form div {
+#login-form #password-input-section {
     -moz-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
     -webkit-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
@@ -41,11 +41,11 @@
     border-radius: 5px;
 }
 
-#login-form div input {
+#login-form #password-input-section input {
     width: 90%;
 }
 
-#login-form div section {
+#login-form #password-input-section section {
     display: flex;
     cursor: pointer;
     padding: 0;
@@ -72,6 +72,7 @@
 }
 
 #login-form input[type='text']::placeholder,
+#login-form input[type='email']::placeholder,
 #login-form input[type='password']::placeholder {
     color: #131313;
 }
@@ -105,13 +106,18 @@
 }
 
 #login-form input[type='text']:focus,
+#login-form input[type='email']:focus,
 #login-form input[type='password']:focus {
     outline: none;
 }
 
+#login-form a {
+    margin: auto;
+}
+
 @media screen and (min-width: 1024px) {
     .Login-card {
-        margin: 200px auto auto auto;
+        margin: 100px auto auto auto;
         width: 25%;
     }
 }

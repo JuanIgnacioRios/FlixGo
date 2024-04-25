@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PublicNavBar from '../PublicNavBar/PublicNavBar'
 import './Register.css'
 
@@ -15,7 +16,7 @@ const Login = () => {
                 <input className="form-input" type="text" name="name" placeholder="Nombre"/>
                 <input className="form-input" type="text" name="surname" placeholder="Apellido"/>
                 <input type="submit" value="Crear Usuario" />
-                <p>Ya tengo usuario</p>
+                <Link to={"/login"}>Ya tengo usuario</Link>
             </form>
         </div>
     </div>
