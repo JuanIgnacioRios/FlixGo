@@ -54,7 +54,11 @@ const Search = () => {
             })
             .then(response => response.json())
             .then(data => {
-                setMovies(data.results); // Actualizar el estado de las películas con los resultados
+                let combinedResults = data.results;
+                if (data.results[0].media_type == "person") {
+                    combinedResults = [...data.results[0].known_for, ...data.results.slice(1)];
+                }
+                setMovies(combinedResults);
             })
             .catch(err => console.log(err));
         }else{
@@ -98,7 +102,7 @@ const Search = () => {
             <h3>{selectedGenreName}</h3>
             <div className="movie-grid">
             {movies.map((movie) => (
-                <Movie key={movie.id} movie={movie} />
+                movie.media_type !== "person" && movie.poster_path !== null && <Movie key={movie.id} movie={movie} />
             ))}
             </div>
         </div>
