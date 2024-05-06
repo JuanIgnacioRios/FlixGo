@@ -8,12 +8,12 @@
 }
 
 .user-card {
+    color: #fff;
     margin: 10px auto;
-    margin-top: 30%;
-    background-color: white;
     border-radius: 25px;
     padding: 30px 20px;
     width: 80%;
+    border: 1px solid #fff;
     -moz-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
     -webkit-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
@@ -25,60 +25,29 @@
     font-weight: lighter;
 }
 
-#edit-user-detail-form {
+.edit-info-container{
     display: flex;
-    flex-flow: column;
-    margin: 20px auto auto auto;
-    gap: 15px;
+    flex-flow: row;
+    width: 100%;
+    gap: 10px;
 }
 
-#edit-user-detail-form input {
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    color: #131313;
-    font-family: 'Montserrat';
+.edit-info-container p{
+    margin: auto auto auto 0;
 }
 
-#edit-user-detail-form input[type='text']::placeholder,
-#edit-user-detail-form input[type='email']::placeholder,
-#edit-user-detail-form input[type='password']::placeholder {
-    color: #131313;
+.edit-info-container button{
+    margin: auto 0 auto auto;
+    display: flex;
 }
 
-#edit-user-detail-form input[type='submit'] {
-    padding: 10px;
-    margin: auto;
-    min-width: 50%;
-    background: #7ED957;
-    color: #261152;
-    transition: 0.3s;
-    -moz-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
-}
-
-#edit-user-detail-form input[type='submit']:hover {
-    transition: 0.3s;
-    background: #261152;
-    color: #FFF;
-}
-
-#edit-user-detail-form p {
-    text-align: center;
-    color: #131313;
+.user-card a{
+    display: flex;
+    justify-content: center;
+    width: 90%;
     margin: auto;
 }
 
-#edit-user-detail-form p[onclick]:hover {
-    cursor: pointer;
-}
-
-#edit-user-detail-form input[type='text']:focus,
-#edit-user-detail-form input[type='email']:focus,
-#edit-user-detail-form input[type='password']:focus {
-    outline: none;
-}
 
 @media screen and (min-width: 1024px) {
     .user-card {

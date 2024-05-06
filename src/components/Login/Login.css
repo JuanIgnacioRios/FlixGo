@@ -8,7 +8,6 @@
 
 .Login-card {
     margin: auto;
-    margin-top: 30%;
     background-color: white;
     border-radius: 25px;
     padding: 30px 20px;
@@ -120,11 +119,12 @@
 
 #to-register-container p {
     margin: 0 !important;
+    padding: 0 !important;
 }
 
 @media screen and (min-width: 1024px) {
     .Login-card {
-        margin: 200px auto auto auto;
+        margin: 100px auto auto auto;
         width: 25%;
     }
 }

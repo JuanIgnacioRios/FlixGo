@@ -6,3 +6,7 @@ body {
     flex-flow: column;
     font-family: 'Montserrat';
 }
+
+#root{
+    background: #261152;
+}

@@ -62,7 +62,7 @@ const Login = () => {
                     </section>
                 </div>
                 <input type="submit" value="Ingresar" />
-                <p>Olvidé mi contraseña</p>
+                <Link to={"/forgetpassword"}>Olvidé mi contraseña</Link>
                 <div id="to-register-container">
                   <p>¿No tenes cuenta?</p><Link to={"/register"}>Registrate</Link>
                 </div>

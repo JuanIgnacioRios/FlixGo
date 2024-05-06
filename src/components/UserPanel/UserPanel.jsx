@@ -2,6 +2,7 @@ import React from 'react'
 import './UserPanel.css'
 import BackButton from '../BackButton/BackButton'
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar'
+import { Link } from 'react-router-dom'
 
 const UserPanel = () => {
     //Acá habria que revisar la sesion del usuario para traer la información y autocompletar los campos
@@ -12,14 +13,20 @@ const UserPanel = () => {
         <BackButton />
         <div className='user-card'>
             <h2>Detalles de cuenta</h2>
-            <form id='edit-user-detail-form' method='put' action="/updateuserinfo">
-                <input className="form-input" type="email" name="email" placeholder="Email del usuario"/>
-                <input className="form-input" id="password" type="password" name="password" placeholder="Contraseña del usuario hasheada"/>
-                <input className="form-input" type="text" name="name" placeholder="Nombre  del usuario"/>
-                <input className="form-input" type="text" name="surname" placeholder="Apellido  del usuario"/>
-                <input type="submit" value="Editar Usuario" />
-                <p>Cerrar sesión</p>
-            </form>
+            <hr />
+            <div>
+              <div id='Email-container' className='edit-info-container'>
+                <p><b>Email:</b> admin@flixgo.com</p>
+                <button><span class="material-symbols-outlined">edit</span></button>
+              </div>
+              <hr />
+              <div id='password-container' className='edit-info-container'>
+                <p><b>Contraseña:</b> *********</p>
+                <button><span class="material-symbols-outlined">edit</span></button>
+              </div>
+              <hr />
+              <Link to={"/login"}>Cerrar sesión</Link>
+            </div>
         </div>
     </div>
   )

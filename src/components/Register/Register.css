@@ -6,17 +6,6 @@
     background-color: #261152;
 }
 
-.Login-card {
-    margin: auto;
-    margin-top: 30%;
-    background-color: white;
-    border-radius: 25px;
-    padding: 30px 20px;
-    width: 80%;
-    -moz-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
-}
 
 .Login-card h2 {
     font-size: 28px;
