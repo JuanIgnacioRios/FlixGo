@@ -1,6 +1,5 @@
 .user-panel {
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-flow: column;
     background-color: #261152;
@@ -25,29 +24,28 @@
     font-weight: lighter;
 }
 
-.edit-info-container{
+.edit-info-container {
     display: flex;
     flex-flow: row;
     width: 100%;
     gap: 10px;
 }
 
-.edit-info-container p{
+.edit-info-container p {
     margin: auto auto auto 0;
 }
 
-.edit-info-container button{
+.edit-info-container button {
     margin: auto 0 auto auto;
     display: flex;
 }
 
-.user-card a{
+.user-card a {
     display: flex;
     justify-content: center;
     width: 90%;
     margin: auto;
 }
-
 
 @media screen and (min-width: 1024px) {
     .user-card {

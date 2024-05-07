@@ -28,35 +28,37 @@ const MoviePage = () => {
 
 
   return (
-    <div className='movie-details'>
+    <>
         <PrivateNavBar />
-        <BackButton />
-        <div className='movie-information'>
-            <section>
-                <img src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`} alt="" />
-            </section>
-            <section>
-                <h2>{movieDetails.title}</h2>
-                <hr />
-                <h5>{movieDetails.overview}</h5><br></br>
-                <h5>Puntaje: {movieDetails.vote_average}</h5>
-                <hr />
-                <h6>Agregá esta pelicula a tus listas:</h6>
-                <div className='List-checkbox'>
-                    <input type="checkbox" placeholder='Vista'/>
-                    <label htmlFor="">Vista</label>
-                </div>
-                <div className='List-checkbox'>
-                    <input type="checkbox" placeholder='Por Ver'/>
-                    <label htmlFor="">Por Ver</label>
-                </div>
-                <div className='List-checkbox'>
-                    <input type="checkbox" placeholder='Preferida'/>
-                    <label htmlFor="">Preferida</label>
-                </div>
-            </section>
+        <div className='movie-details'>
+            <BackButton />
+            <div className='movie-information'>
+                <section>
+                    <img src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`} alt="" />
+                </section>
+                <section>
+                    <h2>{movieDetails.title}</h2>
+                    <hr />
+                    <h5>{movieDetails.overview}</h5><br></br>
+                    <h5>Puntaje: {movieDetails.vote_average}</h5>
+                    <hr />
+                    <h6>Agregá esta pelicula a tus listas:</h6>
+                    <div className='List-checkbox'>
+                        <input type="checkbox" placeholder='Vista'/>
+                        <label htmlFor="">Vista</label>
+                    </div>
+                    <div className='List-checkbox'>
+                        <input type="checkbox" placeholder='Por Ver'/>
+                        <label htmlFor="">Por Ver</label>
+                    </div>
+                    <div className='List-checkbox'>
+                        <input type="checkbox" placeholder='Preferida'/>
+                        <label htmlFor="">Preferida</label>
+                    </div>
+                </section>
+            </div>
         </div>
-    </div>
+    </>
   )
 }
 
