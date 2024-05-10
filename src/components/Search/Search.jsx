@@ -9,6 +9,7 @@ const Search = () => {
     const [movies, setMovies] = useState([]);
     const [genres, setGenres] = useState([]);
     const [selectedGenre, setSelectedGenre] = useState(null);
+    const [filteredResults, setFilteredResults] = useState("")
     const [searchInput, setSearchInput] = useState("")
 
     useEffect(() => {
@@ -37,13 +38,14 @@ const Search = () => {
             })
             .then(response => response.json())
             .then(data => {
-                setMovies(data.results); // Actualizar el estado de las películas con los resultados
+                setMovies(data.results); 
             })
             .catch(err => console.log(err));
         }
     }, [selectedGenre]);
 
     useEffect(() => {
+        setSelectedGenre(null)
         if(searchInput){
             fetch(`https://api.themoviedb.org/3/search/multi?query=${searchInput}&include_adult=false&language=es-ES`, {
                 method: 'GET',
@@ -59,6 +61,7 @@ const Search = () => {
                     combinedResults = [...data.results[0].known_for, ...data.results.slice(1)];
                 }
                 setMovies(combinedResults);
+                setFilteredResults(searchInput)
             })
             .catch(err => console.log(err));
         }else{
@@ -71,14 +74,15 @@ const Search = () => {
             })
             .then(response => response.json())
             .then(data => {
-                setMovies(data.results); // Actualizar el estado de las películas con los resultados
+                setMovies(data.results);
+                setFilteredResults(searchInput)
             })
             .catch(err => console.log(err));
         }
     }, [searchInput]);
 
     const handleGenreClick = (genreId) => {
-        setSelectedGenre(genreId); // Actualizar el estado del género seleccionado al hacer clic en un enlace de género
+        setSelectedGenre(genreId);
     };
 
     const handleSearchInput = (event) => {
@@ -100,6 +104,7 @@ const Search = () => {
                 ))}
             </div>
             <h3>{selectedGenreName}</h3>
+            <h4>{filteredResults != "" ? `Resultados de busqueda de "${searchInput}"`: null}</h4>
             <div className="movie-grid">
             {movies.map((movie) => (
                 movie.media_type !== "person" && movie.poster_path !== null && <Movie key={movie.id} movie={movie} />

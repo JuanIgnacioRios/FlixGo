@@ -47,6 +47,55 @@
     margin: auto;
 }
 
+.modal-body {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+#edit-input,
+.password-input {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    -moz-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
+}
+
+#edit-input:focus,
+.password-input:focus {
+    outline: none;
+}
+
+.savechanges-modal {
+    background: #7ED957;
+    color: #261152;
+    transition: 0.3s;
+    border: none;
+    -moz-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 18px 10px rgba(0, 0, 0, 0.05);
+}
+
+.savechanges-modal:hover {
+    background: #261152;
+    color: #fff;
+}
+
+.close-modal {
+    background: #f1f1f1;
+    color: #121212;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    border: 1px solid red;
+    background: #f1f1f1;
+    color: red;
+    transition: 0.3s;
+}
+
 @media screen and (min-width: 1024px) {
     .user-card {
         margin: 100px auto auto auto;

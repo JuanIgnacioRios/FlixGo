@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false); // Nuevo estado para controlar el estado de inicio de sesión
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -19,17 +19,15 @@ const Login = () => {
     const password = event.target.password.value;
 
     if (username === 'admin' && password === 'flixgo') {
-      // Si las credenciales son correctas, establece loggedIn a true
       setLoggedIn(true);
     } else {
       setErrorMessage('Usuario y/o contraseña incorrectos');
     }
   };
 
-  // Si loggedIn es true, redirige a la página /home
   if (loggedIn) {
     window.location.href = '/home';
-    return null; // Asegura que no haya nada que renderizar después de la redirección
+    return null;
   }
 
   return (

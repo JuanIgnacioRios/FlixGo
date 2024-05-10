@@ -11,8 +11,22 @@ const MovieCarousel = ({ code, title }) => {
 
   useEffect(() => {
     setLoading(false); 
-    if (code !== "No code") {
+    if (code !== "no code") {
       fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=es-ES&page=1&sort_by=popularity.desc&with_genres=${code}`, {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZjMxNTRiZGI1NWMxNDQ0MzdiOTFhNmJhMjM5NmU0YSIsInN1YiI6IjY2MDM2YmZmMDkyOWY2MDE3ZTlmMTY3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6OGO3nQusr7Cz0ivrOPAap5scW6QWAWFWI00Rbe2bHI'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          setMovies(data.results);
+          setLoading(false);
+        })
+        .catch(err => console.log(err));
+    }else{
+      fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=es-ES&page=1&sort_by=popularity.desc&with_genres=28`, {
         method: 'GET',
         headers: {
           accept: 'application/json',
@@ -46,7 +60,7 @@ const MovieCarousel = ({ code, title }) => {
         handleScroll();
       }
     };
-    checkVisibility(); // Verificar visibilidad una vez que las películas estén cargadas
+    checkVisibility();
     const carousel = carouselRef.current;
     if (carousel) {
       carousel.addEventListener('scroll', handleScroll);
@@ -77,7 +91,7 @@ const MovieCarousel = ({ code, title }) => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Mostrar "Loading..." mientras se cargan las películas
+    return <div>Loading...</div>;
   }
 
   return (

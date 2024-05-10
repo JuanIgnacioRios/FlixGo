@@ -44,6 +44,26 @@
     margin: 0px auto;
     max-width: 1280px;
     flex-wrap: wrap;
+    width: 90%;
+    max-height: 300px;
+    overflow-y: auto
+}
+
+.category-filters::-webkit-scrollbar {
+    width: 5px;
+    padding: 0;
+    /* Ancho de la barra de desplazamiento */
+}
+
+.category-filters::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    /* Color del pulgador */
+    border-radius: 4px;
+}
+
+.category-filters::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Color del fondo del riel */
 }
 
 .category-filters a {
@@ -63,7 +83,8 @@
     transition: 0.4s;
 }
 
-.Search h3 {
+.Search h3,
+.Search h4 {
     width: 90%;
     max-width: 1280px;
     margin: 30px auto 10px auto;

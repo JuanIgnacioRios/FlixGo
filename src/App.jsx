@@ -16,16 +16,16 @@ function App() {
   return (
     <Router>
       <Routes>
-      <Route path='/' element={ <Login /> } />
-      <Route path='/home' element={ <Home /> } />
-      <Route path='/search' element={<Search />} />
-      <Route path='/search/genres/:genre' element={<Search />} />
-      <Route path='/movie/:movieid' element={<MoviePage />} />
-      <Route path='/lists' element={ <UserLists /> } />
-      <Route path='/login' element={ <Login /> } />
-      <Route path='/forgetpassword' element={ <ForgetMyPassword /> } />
-      <Route path='/register' element={ <Register /> } />
-      <Route path='/userpanel' element={ <UserPanel /> } />
+        <Route path='/' element={ <Login /> } />
+        <Route path='/home' element={ <Home /> } />
+        <Route path='/search' element={<Search />} />
+        <Route path='/search/genres/:genre' element={<Search />} />
+        <Route path='/movie/:movieid' element={<MoviePage />} />
+        <Route path='/lists' element={ <UserLists /> } />
+        <Route path='/login' element={ <Login /> } />
+        <Route path='/forgetpassword' element={ <ForgetMyPassword /> } />
+        <Route path='/register' element={ <Register /> } />
+        <Route path='/userpanel' element={ <UserPanel /> } />
       </Routes>
     </Router>
   )

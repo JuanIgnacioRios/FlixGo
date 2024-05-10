@@ -40,6 +40,11 @@ const MoviePage = () => {
                     <h2>{movieDetails.title}</h2>
                     <hr />
                     <h5>{movieDetails.overview}</h5><br></br>
+                    <div className='genres'>
+                        {movieDetails.genres && movieDetails.genres.map((genre) => {
+                            return <p key={genre.id} className='genre-button'>{genre.name}</p>;
+                        })}
+                    </div><br></br><br></br>
                     <h5>Puntaje: {movieDetails.vote_average}</h5>
                     <hr />
                     <h6>Agregá esta pelicula a tus listas:</h6>

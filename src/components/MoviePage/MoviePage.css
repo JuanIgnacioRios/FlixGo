@@ -37,6 +37,20 @@
     gap: 5px;
 }
 
+.genres {
+    display: flex;
+    flex-flow: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.genres .genre-button {
+    padding: 10px;
+    border: #FFFFFF 2px solid;
+    border-radius: 40px;
+    margin: 0px;
+}
+
 @media screen and (min-width: 1024px) {
     .movie-information {
         flex-flow: row;

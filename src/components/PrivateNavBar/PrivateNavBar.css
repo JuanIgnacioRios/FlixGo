@@ -7,7 +7,7 @@
     width: 100px;
 }
 
-.navbar-brand{
+.navbar-brand {
     padding: 0;
 }
 
@@ -21,7 +21,7 @@
     z-index: 999;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     background: transparent !important;
 }
 
@@ -40,11 +40,11 @@ span.navbar-toggler-icon {
 
 #navbarNav ul {
     margin: auto 0 auto auto;
-    background-color:#261152;
+    background-color: #261152;
     border-radius: 0 0 10px 10px;
 }
 
-.nav-item{
+.nav-item {
     text-align: right;
     padding-right: 10px;
 }
