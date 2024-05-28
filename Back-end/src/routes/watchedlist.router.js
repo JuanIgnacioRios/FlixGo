@@ -1,9 +1,9 @@
 import express from 'express';
-import movielistController from '../controllers/sessions.controller.js';
+import watchedlistController from '../controllers/sessions.controller.js';
 
 const router = express.Router();
 
-router.post('/register', sessionsController.register)
-router.post('/login', sessionsController.login)
+//Watched List
+router.get('/', watchedlistController.getwatchedlistmovies)
 
 export default router

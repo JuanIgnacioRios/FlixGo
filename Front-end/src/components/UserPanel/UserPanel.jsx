@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './UserPanel.css';
 import BackButton from '../BackButton/BackButton';
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar';
@@ -12,6 +12,12 @@ const UserPanel = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [modalLabel, setModalLabel] = useState('');
   const [modalType, setModalType] = useState('');
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    setUser(JSON.parse(storedUser))
+  }, []);
 
   const showEditModal = (element) => {
     setModalName(element)
@@ -42,8 +48,33 @@ const UserPanel = () => {
       }
     }).showToast();
 };
+  const changeUserInfo = async (modalType, event) =>{
+    console.log(event)
+    event.preventDefault();
+    console.log("entro",modalType)
+      if(modalType == "email"){
+        const newEmail = document.getElementById('edit-input').value;
+        console.log("entro",newEmail)
+        try{
+          const response = await fetch(`http://localhost:8080/api/users/changeemail/${user._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "email": newEmail
+          }),
+          });
+          console.log(response)
+        }catch(error){
+          console.log(error)
+        }
+      }
+    
 
-  
+    }
+
+  console.log(user)
 
   return (
     <>
@@ -56,7 +87,7 @@ const UserPanel = () => {
           <div>
             <div id='Email-container' className='edit-info-container'>
               <p>
-                <b>Email:</b> admin@flixgo.com
+                <b>Email:</b> 
               </p>
               <button onClick={() => showEditModal('Email')}>
                 <span className='material-symbols-outlined'>edit</span>
@@ -97,8 +128,15 @@ const UserPanel = () => {
           <Button variant='secondary' onClick={hideModal} className='close-modal'>
             Cerrar
           </Button>
-          <Button variant='primary' onClick={()=>{hideModal(); showMessage(`Cambio de ${modalName} realizado con exito`)}}  className='savechanges-modal'>
-            Guardar cambios
+          <Button 
+            variant='primary' 
+            onClick={(event) => { // Quita el parámetro event
+              changeUserInfo(modalType, event); // Quita event aquí
+              hideModal(); 
+              showMessage(`Cambio de ${modalName} realizado con exito`);
+            }}  
+            className='savechanges-modal'>
+              Guardar cambios
           </Button>
         </Modal.Footer>
       </Modal>
