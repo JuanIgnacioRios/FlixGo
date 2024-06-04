@@ -1,5 +1,7 @@
 import usersModel from "../dao/models/users.model.js"
 import { createHash, isValidPassword, generateToken, authToken } from '../../utils.js'
+import { LocalStorage } from 'node-localstorage';
+const localStorage = new LocalStorage('./scratch');
 
 async function register(req, res) {
     const { first_name, last_name, username, email, password } = req.body
@@ -58,6 +60,10 @@ async function login(req, res) {
 
 async function current(req, res) {
     const user = req.user
+    console.log(req.user.watched_list)
+    localStorage.setItem('watched_list', req.user.watched_list)
+    localStorage.setItem('favourite_list', req.user.favourite_list)
+    localStorage.setItem('towatch_list', req.user.towatch_list)
     res.send(user)
 }
 

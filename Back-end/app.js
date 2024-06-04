@@ -5,6 +5,9 @@ import cors from 'cors'
 
 import sessionsRouter from './src/routes/sessions.router.js'
 import usersRouter from './src/routes/users.router.js'
+import watchedlistRouter from './src/routes/watchedlist.router.js'
+import favouritelistRouter from './src/routes/favouritelist.router.js'
+import towatchlistRouter from './src/routes/towatchlist.router.js'
 import { authToken } from './utils.js';
 
 const app = express();
@@ -17,6 +20,9 @@ app.use(cors());
 
 app.use('/api/sessions', sessionsRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/watchedlist', watchedlistRouter)
+app.use('/api/favouritelist', favouritelistRouter)
+app.use('/api/towatchlist', towatchlistRouter)
 app.get('/movies', authToken, (req, res) => {
     res.send("entro")
 })

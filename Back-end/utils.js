@@ -14,7 +14,8 @@ export const authToken = (req, res, next) => {
     let authHeader = req.headers.authorization;
     if (!authHeader) {
         authHeader = req.cookies.jwt
-    } else {
+    } 
+    if (!authHeader) {
         return res.status(401).send({ error: "No autenticado" })
     }
     const token = authHeader.split(' ')[1];

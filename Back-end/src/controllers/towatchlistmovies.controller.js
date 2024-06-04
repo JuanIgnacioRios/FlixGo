@@ -1,43 +1,43 @@
-import watchedListManager from "../services/watchedListManager.js";
+import towatchListManager from "../services/towatchListManager.js";
 
-const WatchedListManager = new watchedListManager()
+const ToWatchListManager = new towatchListManager()
 
-async function getWatchedListMovies(req, res){
+async function getToWatchListMovies(req, res){
     const userId = req.params.uid
     if (!userId) {
         return res.status(400).send({ error: "Invalid userId" });
     }else{
-        const result = await WatchedListManager.getMoviesFromList(userId)
+        const result = await ToWatchListManager.getMoviesFromList(userId)
         res.send(result)
     }
 }
 
-async function addMovieToWatchedList(req, res) {
+async function addMovieToToWatchList(req, res) {
     const userId = req.params.uid;
     const movieId = req.params.mid;
     
     if (!userId || !movieId) {
         return res.status(400).send({ error: "Invalid userId or movieId" });
     }else{
-        const result = await WatchedListManager.addMovieToList(userId, movieId)
+        const result = await ToWatchListManager.addMovieToList(userId, movieId)
         res.send(result)
     }
 }
 
-async function deleteMovieToWatchedList(req, res){
+async function deleteMovieToToWatchList(req, res){
     const userId = req.params.uid;
     const movieId = req.params.mid;
 
     if (!userId || !movieId) {
         return res.status(400).send({ error: "Invalid userId or movieId" });
     }else{
-        const result = await WatchedListManager.deleteMovieToWatchedList(userId, movieId)
+        const result = await ToWatchListManager.deleteMovieToToWatchList(userId, movieId)
         res.send(result)
     }    
 }
 
 export default {
-    getWatchedListMovies,
-    addMovieToWatchedList,
-    deleteMovieToWatchedList
+    getToWatchListMovies,
+    addMovieToToWatchList,
+    deleteMovieToToWatchList
 }
