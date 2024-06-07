@@ -11,6 +11,9 @@ const MoviePage = () => {
     let movieid = useParams()
     movieid = movieid.movieid
 
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userid = user._id
+
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${movieid}?language=es-ES`, {
         method: 'GET',
@@ -25,6 +28,55 @@ const MoviePage = () => {
         })
         .catch(err => console.log(err));
     }, []);
+
+   async function handleCheckboxChangeWatchedList(event){
+    const { checked } = event.target;
+    const apiMethodChecked = "POST"
+    const apiMethodUnchecked = "DELETE"
+
+    try {
+        const response = await fetch(`http://localhost:8080/api/watchedlist/user/${userid}/movie/${movieid}`, {
+          method: checked ? apiMethodChecked : apiMethodUnchecked,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        console.log(response)
+   }catch(error){
+        console.log(error)
+   }}
+
+   async function handleCheckboxChangeToWatchList(event){
+    const { checked } = event.target;
+    const apiMethodChecked = "POST"
+    const apiMethodUnchecked = "DELETE"
+    try {
+        const response = await fetch(`http://localhost:8080/api/towatchlist/user/${userid}/movie/${movieid}`, {
+          method: checked ? apiMethodChecked : apiMethodUnchecked,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        console.log(response)
+   }catch(error){
+        console.log(error)
+   }}
+
+   async function handleCheckboxChangeFavouriteList(event){
+    const { checked } = event.target;
+    const apiMethodChecked = "POST"
+    const apiMethodUnchecked = "DELETE"
+    try {
+        const response = await fetch(`http://localhost:8080/api/favouritelist/user/${userid}/movie/${movieid}`, {
+          method: checked ? apiMethodChecked : apiMethodUnchecked,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        console.log(response)
+   }catch(error){
+        console.log(error)
+   }}
 
 
   return (
@@ -49,15 +101,15 @@ const MoviePage = () => {
                     <hr />
                     <h6>Agregá esta pelicula a tus listas:</h6>
                     <div className='List-checkbox'>
-                        <input type="checkbox" placeholder='Vista'/>
+                        <input type="checkbox" placeholder='Vista' onChange={handleCheckboxChangeWatchedList}/>
                         <label htmlFor="">Vista</label>
                     </div>
                     <div className='List-checkbox'>
-                        <input type="checkbox" placeholder='Por Ver'/>
+                        <input type="checkbox" placeholder='Por Ver' onChange={handleCheckboxChangeToWatchList}/>
                         <label htmlFor="">Por Ver</label>
                     </div>
                     <div className='List-checkbox'>
-                        <input type="checkbox" placeholder='Preferida'/>
+                        <input type="checkbox" placeholder='Preferida' onChange={handleCheckboxChangeFavouriteList} />
                         <label htmlFor="">Preferida</label>
                     </div>
                 </section>
