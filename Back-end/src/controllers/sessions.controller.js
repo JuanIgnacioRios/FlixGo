@@ -44,13 +44,9 @@ async function login(req, res) {
         if (!isValidPassword(user, password)) {
             return res.status(400).send({ status: 'error', error: 'Contraseña Incorrecta' });
         }
-        // Crear un nuevo objeto de usuario sin el campo de contraseña
         const userWithoutPassword = {...user.toObject() };
         delete userWithoutPassword.password;
-        // Generar token de acceso
         const access_token = generateToken(userWithoutPassword);
-        // Establecer la cookie de JWT
-        console.log(access_token)
         res.cookie('jwt', access_token, { httpOnly: false, maxAge: 10000 }).json({token: access_token, user: userWithoutPassword});
     } catch (error) {
         return res.status(500).send({ status: 'error', error: error });

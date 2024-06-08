@@ -25,7 +25,6 @@ const Home = () => {
   }, []);
 
   const jwtToken = Cookies.get('jwt');
-  console.log(jwtToken)
 
 
   return (

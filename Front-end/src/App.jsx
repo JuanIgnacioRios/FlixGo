@@ -10,22 +10,31 @@ import Search from './components/Search/Search';
 import MoviePage from './components/MoviePage/MoviePage';
 import UserPanel from './components/UserPanel/UserPanel';
 import ForgetMyPassword from './components/ForgetMyPassword/ForgetMyPassword';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
+
+  const wrapPrivateRoute = (element) => {
+    return (
+      <PrivateRoute>
+        {element}
+      </PrivateRoute>
+    );
+  };
 
   return (
     <Router>
       <Routes>
         <Route path='/' element={ <Login /> } />
-        <Route path='/home' element={ <Home /> } />
-        <Route path='/search' element={<Search />} />
-        <Route path='/search/genres/:genre' element={<Search />} />
-        <Route path='/movie/:movieid' element={<MoviePage />} />
-        <Route path='/lists' element={ <UserLists /> } />
+        <Route path='/home' element={wrapPrivateRoute(<Home />)} />
+        <Route path='/search' element={wrapPrivateRoute(<Search />)} />
+        <Route path='/search/genres/:genre' element={wrapPrivateRoute(<Search />)} />
+        <Route path='/movie/:movieid' element={wrapPrivateRoute(<MoviePage />)} />
+        <Route path='/lists' element={ wrapPrivateRoute(<UserLists /> )} />
         <Route path='/login' element={ <Login /> } />
         <Route path='/forgetpassword' element={ <ForgetMyPassword /> } />
         <Route path='/register' element={ <Register /> } />
-        <Route path='/userpanel' element={ <UserPanel /> } />
+        <Route path='/userpanel' element={ wrapPrivateRoute(<UserPanel />) } />
       </Routes>
     </Router>
   )
