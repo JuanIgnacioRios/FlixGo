@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar'
 import BackButton from '../BackButton/BackButton'
+import Cookie from 'js-cookie'
 import './MoviePage.css'
 
 const MoviePage = () => {
@@ -39,9 +40,9 @@ const MoviePage = () => {
           method: checked ? apiMethodChecked : apiMethodUnchecked,
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Cookie.get('jwt')}`
           }
         });
-        console.log(response)
    }catch(error){
         console.log(error)
    }}
@@ -55,9 +56,9 @@ const MoviePage = () => {
           method: checked ? apiMethodChecked : apiMethodUnchecked,
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Cookie.get('jwt')}`
           }
         });
-        console.log(response)
    }catch(error){
         console.log(error)
    }}
@@ -71,9 +72,9 @@ const MoviePage = () => {
           method: checked ? apiMethodChecked : apiMethodUnchecked,
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Cookie.get('jwt')}`
           }
         });
-        console.log(response)
    }catch(error){
         console.log(error)
    }}

@@ -20,12 +20,9 @@ app.use(cors());
 
 app.use('/api/sessions', sessionsRouter)
 app.use('/api/users', usersRouter)
-app.use('/api/watchedlist', watchedlistRouter)
-app.use('/api/favouritelist', favouritelistRouter)
-app.use('/api/towatchlist', towatchlistRouter)
-app.get('/movies', authToken, (req, res) => {
-    res.send("entro")
-})
+app.use('/api/watchedlist', authToken, watchedlistRouter)
+app.use('/api/favouritelist', authToken, favouritelistRouter)
+app.use('/api/towatchlist', authToken, towatchlistRouter)
 
 
 mongoose.connect("mongodb+srv://FlixGo:FlixGo12345@flixgo.ohim30t.mongodb.net/?retryWrites=true&w=majority&appName=FlixGo")

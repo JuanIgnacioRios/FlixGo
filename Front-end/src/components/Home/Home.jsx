@@ -4,6 +4,7 @@ import MovieCarousel from '../MovieCarousel/MovieCarousel';
 import HomeCover from '../HomeCover/HomeCover';
 import { useState, useEffect } from 'react';
 import PrivateNavBar from '../PrivateNavBar/PrivateNavBar';
+import Cookies from 'js-cookie'
 
 const Home = () => {
   const [genres, setGenres] = useState([])
@@ -23,7 +24,8 @@ const Home = () => {
       .catch(err => console.log(err));
   }, []);
 
-
+  const jwtToken = Cookies.get('jwt');
+  console.log(jwtToken)
 
 
   return (

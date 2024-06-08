@@ -51,7 +51,7 @@ async function login(req, res) {
         const access_token = generateToken(userWithoutPassword);
         // Establecer la cookie de JWT
         console.log(access_token)
-        res.cookie('jwt', access_token, { maxAge: 10000 }).json(userWithoutPassword);
+        res.cookie('jwt', access_token, { httpOnly: false, maxAge: 10000 }).json({token: access_token, user: userWithoutPassword});
     } catch (error) {
         return res.status(500).send({ status: 'error', error: error });
     }
@@ -60,10 +60,6 @@ async function login(req, res) {
 
 async function current(req, res) {
     const user = req.user
-    console.log(req.user.watched_list)
-    localStorage.setItem('watched_list', req.user.watched_list)
-    localStorage.setItem('favourite_list', req.user.favourite_list)
-    localStorage.setItem('towatch_list', req.user.towatch_list)
     res.send(user)
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Movie from '../Movie/Movie';
+import Cookie from 'js-cookie'
 import './MovieCarousel.css';
 
 const MovieCarousel = ({ code, title }) => {
@@ -11,7 +12,7 @@ const MovieCarousel = ({ code, title }) => {
 
   useEffect(() => {
     setLoading(false); 
-    if (code !== "no code") {
+    if (code !== "watched" && code !== "towatch" && code !== "favourite") {
       fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=es-ES&page=1&sort_by=popularity.desc&with_genres=${code}`, {
         method: 'GET',
         headers: {
@@ -26,16 +27,18 @@ const MovieCarousel = ({ code, title }) => {
         })
         .catch(err => console.log(err));
     }else{
-      fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=es-ES&page=1&sort_by=popularity.desc&with_genres=28`, {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const userid = user._id
+      fetch(`http://localhost:8080/api/${code}list/user/${userid}`, {
         method: 'GET',
         headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZjMxNTRiZGI1NWMxNDQ0MzdiOTFhNmJhMjM5NmU0YSIsInN1YiI6IjY2MDM2YmZmMDkyOWY2MDE3ZTlmMTY3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6OGO3nQusr7Cz0ivrOPAap5scW6QWAWFWI00Rbe2bHI'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.get('jwt')}`
         }
       })
         .then(response => response.json())
         .then(data => {
-          setMovies(data.results);
+          setMovies(data.payload);
           setLoading(false);
         })
         .catch(err => console.log(err));
@@ -100,9 +103,13 @@ const MovieCarousel = ({ code, title }) => {
       <div className="carousel-container">
         {scrollLeftVisible && <button className="scroll-button left" onClick={handleScrollLeft}>{'<'}</button>}
         <div className="carousel" ref={carouselRef}>
-          {movies.map((movie) => (
-            <Movie key={movie.id} movie={movie} />
-          ))}
+          {movies.length === 0 ? (
+            <div className="no-movies">Sin Películas</div>
+          ) : (
+            movies.map((movie) => (
+              <Movie key={movie.id} movie={movie} />
+            ))
+          )}
         </div>
         {scrollRightVisible && <button className="scroll-button right" onClick={handleScrollRight}>{'>'}</button>}
       </div>

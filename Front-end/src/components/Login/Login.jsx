@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PublicNavBar from '../PublicNavBar/PublicNavBar';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import Cookie from 'js-cookie'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,11 +31,10 @@ const Login = () => {
         }),
       });
 
-      console.log(response)
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem('user', JSON.stringify(data));
-        console.log(data)
+        localStorage.setItem('user', JSON.stringify(data.user));
+        Cookie.set('jwt', data.token, { expires: 1 })
         setLoggedIn(true)
       } else {
         const errorData = await response.json();

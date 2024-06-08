@@ -5,6 +5,7 @@ import PrivateNavBar from '../PrivateNavBar/PrivateNavBar';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import Toastify from 'toastify-js'
+import Cookie from 'js-cookie'
 
 const UserPanel = () => {
   const [showModal, setShowModal] = useState(false);
@@ -37,7 +38,7 @@ const UserPanel = () => {
     setShowModal(false);
   };
 
-  const showMessage = (message) => {
+  const showSuccessMessage = (message) => {
     Toastify({
       text: message,
       duration: 3000,
@@ -47,34 +48,83 @@ const UserPanel = () => {
         color: "#26115"
       }
     }).showToast();
+  };
+
+  const showErrorMessage = (message) => {
+    Toastify({
+      text: message,
+      duration: 3000,
+      close: true,
+      style: {
+        background: "#FF0000",
+        color: "#FFFFFF"
+      }
+    }).showToast();
 };
+
   const changeUserInfo = async (modalType, event) =>{
-    console.log(event)
     event.preventDefault();
-    console.log("entro",modalType)
       if(modalType == "email"){
         const newEmail = document.getElementById('edit-input').value;
-        console.log("entro",newEmail)
+        if(newEmail == "") return showErrorMessage(`Error al realizar el cambio de email. No se ingreso un nuevo email`)
         try{
           const response = await fetch(`http://localhost:8080/api/users/changeemail/${user._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Cookie.get('jwt')}`
           },
           body: JSON.stringify({
             "email": newEmail
           }),
           });
-          console.log(response)
+          if(response.ok){
+            let userToUpdate = JSON.parse(localStorage.getItem('user'))
+            userToUpdate.email = newEmail
+            setUser(userToUpdate);
+            localStorage.setItem('user', JSON.stringify(userToUpdate))
+            showSuccessMessage(`Cambio de email realizado con exito`);
+          }else{
+            showErrorMessage(`Error al realizar el cambio de email. Por favor vuelva a intentarlo`)
+          }
+        }catch(error){
+          console.log(error)
+        }
+      }else{
+        const newPassword = document.getElementById('password-input1').value
+        const newPassword2 = document.getElementById('password-input2').value
+        if (newPassword != newPassword2) return showErrorMessage(`Las contraseñas ingresadas no son iguales`)
+        if(newPassword == "") return showErrorMessage(`Error al realizar el cambio de contraseña. No se ingreso un nueva  nueva constraseña`)
+        try{
+          const response = await fetch(`http://localhost:8080/api/users/changepassword/${user._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${Cookie.get('jwt')}`
+          },
+          body: JSON.stringify({
+            "password": newPassword
+          }),
+          });
+          if(response.ok){
+            showSuccessMessage(`Cambio de contraseña realizado con exito`);
+          }else{
+            showErrorMessage(`Error al realizar el cambio de contraseña. Por favor vuelva a intentarlo`)
+          }
         }catch(error){
           console.log(error)
         }
       }
-    
-
     }
 
-  console.log(user)
+    const handleLogout = () => {
+      Cookie.remove('jwt');
+      localStorage.clear();
+    };
+
+  if(!user){
+    return <div>Loading...</div>
+  }
 
   return (
     <>
@@ -87,7 +137,7 @@ const UserPanel = () => {
           <div>
             <div id='Email-container' className='edit-info-container'>
               <p>
-                <b>Email:</b> 
+                <b>Email: {user.email}</b> 
               </p>
               <button onClick={() => showEditModal('Email')}>
                 <span className='material-symbols-outlined'>edit</span>
@@ -103,7 +153,7 @@ const UserPanel = () => {
               </button>
             </div>
             <hr />
-            <Link to={'/login'}>Cerrar sesión</Link>
+            <Link to={'/login'} onClick={handleLogout}>Cerrar sesión</Link>
           </div>
         </div>
       </div>
@@ -118,8 +168,8 @@ const UserPanel = () => {
         </Modal.Body>
         ) : (
           <Modal.Body>
-          <input className='password-input' type={modalType} placeholder='Ingrese su nueva contraseña' />
-          <input className='password-input' type={modalType} placeholder='Repita su nueva contraseña'/>
+          <input id='password-input1'className='password-input' type={modalType} placeholder='Ingrese su nueva contraseña' />
+          <input id='password-input2' className='password-input' type={modalType} placeholder='Repita su nueva contraseña'/>
         </Modal.Body>
         )
 
@@ -130,10 +180,9 @@ const UserPanel = () => {
           </Button>
           <Button 
             variant='primary' 
-            onClick={(event) => { // Quita el parámetro event
-              changeUserInfo(modalType, event); // Quita event aquí
+            onClick={(event) => {
+              changeUserInfo(modalType, event);
               hideModal(); 
-              showMessage(`Cambio de ${modalName} realizado con exito`);
             }}  
             className='savechanges-modal'>
               Guardar cambios
