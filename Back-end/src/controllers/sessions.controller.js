@@ -51,10 +51,8 @@ async function current(req, res) {
 
 async function sendresetpasswordemail(req, res){
     const { email } = req.body
-    console.log(email)
     try {
         let result = await usersModel.findOne({email})
-        console.log(result)
         if(result){
             let token = generateToken({id: result.id, email:result.email, name: result.first_name});
             let emailresponse = await transport.sendMail({
