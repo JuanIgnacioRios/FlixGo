@@ -11,6 +11,7 @@ import MoviePage from './components/MoviePage/MoviePage';
 import UserPanel from './components/UserPanel/UserPanel';
 import ForgetMyPassword from './components/ForgetMyPassword/ForgetMyPassword';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import ResetPassword from './components/ResetPassword/ResetPassword';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/forgetpassword' element={ <ForgetMyPassword /> } />
         <Route path='/register' element={ <Register /> } />
         <Route path='/userpanel' element={ wrapPrivateRoute(<UserPanel />) } />
+        <Route path='/reset-password' element={ <ResetPassword /> } />
       </Routes>
     </Router>
   )

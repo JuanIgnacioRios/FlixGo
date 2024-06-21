@@ -34,7 +34,15 @@
 .List-checkbox {
     display: flex;
     flex-flow: row;
-    gap: 5px;
+    gap: 10px;
+}
+
+.List-checkbox input{
+    width: 17px;
+}
+
+.List-checkbox label{
+    font-size: 25px;
 }
 
 .genres {

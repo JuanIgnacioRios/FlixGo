@@ -7,5 +7,6 @@ const router = express.Router();
 router.post('/register', sessionsController.register)
 router.post('/login', sessionsController.login)
 router.get('/current', authToken, sessionsController.current)
+router.post('/sendresetpasswordemail', sessionsController.sendresetpasswordemail )
 
 export default router

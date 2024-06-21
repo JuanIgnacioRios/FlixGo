@@ -6,7 +6,8 @@
         "express": "^4.19.2",
         "jsonwebtoken": "^9.0.2",
         "mongoose": "^8.4.0",
-        "node-localstorage": "^3.0.5"
+        "node-localstorage": "^3.0.5",
+        "nodemailer": "^6.9.14"
     },
     "name": "back-end",
     "version": "1.0.0",

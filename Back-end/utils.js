@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import nodemailer from 'nodemailer'
 
 const PRIVATE_KEY = "flixgojwt"
 
@@ -25,3 +26,12 @@ export const authToken = (req, res, next) => {
         next();
     })
 }
+
+export const transport = nodemailer.createTransport({
+    service: "gmail",
+    port: 587,
+    auth:{
+        user: "juanignaciorios2003@gmail.com",
+        pass: "blgg gkch wheu scmo"
+    }
+})
