@@ -39,6 +39,7 @@ const Search = () => {
             .then(response => response.json())
             .then(data => {
                 setMovies(data.results); 
+                setFilteredResults("")
             })
             .catch(err => console.log(err));
         }
