@@ -24,14 +24,14 @@ class watchedListManager{
                 if (!newWatchedList.includes(movieId)) {
                     newWatchedList.push(movieId);
                 } else {
-                    return {status: "Error", error: "Movie already in watched list" };
+                    return {status: "Error", error: "La pelicula ya está en la lista" };
                 }
     
                 await usersModel.updateOne({ _id: userId }, { watched_list: newWatchedList });
 
                 return {status: "Success", payload: newWatchedList};
             } else {
-                return {status: "Error", error: "User not found" };
+                return {status: "Error", error: "Usuario no encontrado" };
             }
         } catch (error) {
             return {status: "Error", error: error}

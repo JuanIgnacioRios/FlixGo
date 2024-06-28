@@ -1,0 +1,9 @@
+path:
+  /api/users/changepassword/{UserId}:
+    put:
+      summary: Cambiar la contraseña de un usuario en especifico
+      tags:
+        -Usuario
+      responses:
+        "200":
+          description: Se cambio la contraseña correctamente

@@ -24,7 +24,7 @@ async function register(req, res) {
 async function login(req, res) {
     const { username, password } = req.body;
     if (!username || !password) {
-        return res.status(400).send({ status: 'error', error: 'Username and password are required' });
+        return res.status(400).send({ status: 'error', error: 'Usuario y contraseña son requeridos' });
     }
     try {
         const user = await usersModel.findOne({ username: username });
