@@ -7,11 +7,7 @@
         "jsonwebtoken": "^9.0.2",
         "mongoose": "^8.4.0",
         "node-localstorage": "^3.0.5",
-        "nodemailer": "^6.9.14",
-        "path": "^0.12.7",
-        "swagger-jsdoc": "^6.2.8",
-        "swagger-ui-express": "^5.0.1",
-        "url": "^0.11.3"
+        "nodemailer": "^6.9.14"
     },
     "name": "back-end",
     "version": "1.0.0",
