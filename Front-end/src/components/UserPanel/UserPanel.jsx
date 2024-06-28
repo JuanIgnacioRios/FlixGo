@@ -9,9 +9,6 @@ import Cookie from 'js-cookie'
 
 const UserPanel = () => {
   const [showModal, setShowModal] = useState(false);
-  const [modalName,setModalName] = useState('')
-  const [modalTitle, setModalTitle] = useState('');
-  const [modalLabel, setModalLabel] = useState('');
   const [modalType, setModalType] = useState('');
   const [user, setUser] = useState(null);
 
@@ -21,16 +18,6 @@ const UserPanel = () => {
   }, []);
 
   const showEditModal = (element) => {
-    setModalName(element)
-    setModalTitle(`Editar ${element}`);
-    setModalLabel(`Nuevo ${element}`);
-    if (element === 'Email') {
-      setModalType('email');
-    } else if (element === 'Contraseña') {
-      setModalType('password');
-    } else {
-      setModalType('text');
-    }
     setShowModal(true);
   };
 
@@ -60,69 +47,41 @@ const UserPanel = () => {
         color: "#FFFFFF"
       }
     }).showToast();
-};
+  };
 
-  const changeUserInfo = async (modalType, event) =>{
+  const changeUserInfo = async (event) => {
     event.preventDefault();
-      if(modalType == "email"){
-        const newEmail = document.getElementById('edit-input').value;
-        if(newEmail == "") return showErrorMessage(`Error al realizar el cambio de email. No se ingreso un nuevo email`)
-        try{
-          const response = await fetch(`http://localhost:8080/api/users/changeemail/${user._id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${Cookie.get('jwt')}`
-          },
-          body: JSON.stringify({
-            "email": newEmail
-          }),
-          });
-          if(response.ok){
-            let userToUpdate = JSON.parse(localStorage.getItem('user'))
-            userToUpdate.email = newEmail
-            setUser(userToUpdate);
-            localStorage.setItem('user', JSON.stringify(userToUpdate))
-            showSuccessMessage(`Cambio de email realizado con exito`);
-          }else{
-            showErrorMessage(`Error al realizar el cambio de email. Por favor vuelva a intentarlo`)
-          }
-        }catch(error){
-          console.log(error)
-        }
-      }else{
-        const newPassword = document.getElementById('password-input1').value
-        const newPassword2 = document.getElementById('password-input2').value
-        if (newPassword != newPassword2) return showErrorMessage(`Las contraseñas ingresadas no son iguales`)
-        if(newPassword == "") return showErrorMessage(`Error al realizar el cambio de contraseña. No se ingreso un nueva  nueva constraseña`)
-        try{
-          const response = await fetch(`http://localhost:8080/api/users/changepassword/${user._id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${Cookie.get('jwt')}`
-          },
-          body: JSON.stringify({
-            "password": newPassword
-          }),
-          });
-          if(response.ok){
-            showSuccessMessage(`Cambio de contraseña realizado con exito`);
-          }else{
-            showErrorMessage(`Error al realizar el cambio de contraseña. Por favor vuelva a intentarlo`)
-          }
-        }catch(error){
-          console.log(error)
-        }
+    const newPassword = document.getElementById('password-input1').value
+    const newPassword2 = document.getElementById('password-input2').value
+    if (newPassword != newPassword2) return showErrorMessage(`Las contraseñas ingresadas no son iguales`)
+    if (newPassword == "") return showErrorMessage(`Error al realizar el cambio de contraseña. No se ingreso un nueva  nueva constraseña`)
+    try {
+      const response = await fetch(`http://localhost:8080/api/users/changepassword/${user._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.get('jwt')}`
+        },
+        body: JSON.stringify({
+          "password": newPassword
+        }),
+      });
+      if (response.ok) {
+        showSuccessMessage(`Cambio de contraseña realizado con exito`);
+      } else {
+        showErrorMessage(`Error al realizar el cambio de contraseña. Por favor vuelva a intentarlo`)
       }
+    } catch (error) {
+      console.log(error)
     }
+  }
 
-    const handleLogout = () => {
-      Cookie.remove('jwt');
-      localStorage.clear();
-    };
+  const handleLogout = () => {
+    Cookie.remove('jwt');
+    localStorage.clear();
+  };
 
-  if(!user){
+  if (!user) {
     return <div>Loading...</div>
   }
 
@@ -137,11 +96,8 @@ const UserPanel = () => {
           <div>
             <div id='Email-container' className='edit-info-container'>
               <p>
-                <b>Email: {user.email}</b> 
+                <b>Email: {user.email}</b>
               </p>
-              <button onClick={() => showEditModal('Email')}>
-                <span className='material-symbols-outlined'>edit</span>
-              </button>
             </div>
             <hr />
             <div id='password-container' className='edit-info-container'>
@@ -160,32 +116,24 @@ const UserPanel = () => {
 
       <Modal show={showModal} onHide={hideModal} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{modalTitle}</Modal.Title>
+          <Modal.Title>Cambiar contraseña</Modal.Title>
         </Modal.Header>
-        {modalType == "email" ? (
         <Modal.Body>
-          <input id='edit-input' type={modalType} placeholder='Ingrese su nuevo email'/>
+          <input id='password-input1' className='password-input' type="password" placeholder='Ingrese su nueva contraseña' />
+          <input id='password-input2' className='password-input' type="password" placeholder='Repita su nueva contraseña' />
         </Modal.Body>
-        ) : (
-          <Modal.Body>
-          <input id='password-input1'className='password-input' type={modalType} placeholder='Ingrese su nueva contraseña' />
-          <input id='password-input2' className='password-input' type={modalType} placeholder='Repita su nueva contraseña'/>
-        </Modal.Body>
-        )
-
-        }
         <Modal.Footer>
           <Button variant='secondary' onClick={hideModal} className='close-modal'>
             Cerrar
           </Button>
-          <Button 
-            variant='primary' 
+          <Button
+            variant='primary'
             onClick={(event) => {
-              changeUserInfo(modalType, event);
-              hideModal(); 
-            }}  
+              changeUserInfo(event);
+              hideModal();
+            }}
             className='savechanges-modal'>
-              Guardar cambios
+            Guardar cambios
           </Button>
         </Modal.Footer>
       </Modal>

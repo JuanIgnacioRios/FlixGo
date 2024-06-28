@@ -8,13 +8,6 @@ async function changepassword(req, res) {
     res.send(result)
 }
 
-async function changeemail(req, res) {
-    const userId = req.params.uid
-    const { email } = req.body
-    let result = await usersModel.updateOne({ _id: userId }, email)
-    res.send(result)
-}
-
 export default {
     changepassword,
     changeemail
