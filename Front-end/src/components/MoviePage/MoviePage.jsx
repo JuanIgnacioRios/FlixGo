@@ -21,7 +21,6 @@ const MoviePage = () => {
       const user = JSON.parse(storedUser);
       setUser(user);
 
-      // Check if the movie is in any of the user's lists
       if (user.watched_list.includes(movieid)) setWatched(true);
       if (user.towatch_list.includes(movieid)) setToWatch(true);
       if (user.favourite_list.includes(movieid)) setFavourite(true);
